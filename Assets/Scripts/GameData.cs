@@ -52,13 +52,13 @@ public class GameData3
     }
 }
 
-// [System.Serializable]
-// public class GameData4
-// {
-//     public bool currentPatchesCondition;
+[System.Serializable]
+public class GameData4
+{
+    public bool currentFences;
 
-//     public GameData4(PlantingPatchScript pps)
-//     {
-//         currentPatchesCondition = pps.isNotPlanted = true;
-//     }
-// }
+    public GameData4(FenceSpawningScript fss)
+    {
+        
+    }
+}

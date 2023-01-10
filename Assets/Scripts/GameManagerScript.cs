@@ -201,6 +201,7 @@ public class GameManagerScript : MonoBehaviour
             money -= 25;
             fenceLVLCount++;
             gameObject.GetComponent<FenceSpawningScript>().SpawnFencesBottom1();
+            
         }
         else if (money >= 25 && fenceLVLCount == 2f)
         {
@@ -452,11 +453,7 @@ public class GameManagerScript : MonoBehaviour
         GameData3 data3 = SaveSystem.LoadData3();
         patchSpawner.GetComponent<SpawnPatchScript>().farmCount = data3.currentPatches;
         patchSpawner.GetComponent<SpawnPatchScript>().ResetLevel();
-        //patchSpawner.GetComponent<SpawnPatchScript>().patchArray = data3.patches;
-        //ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position = new Vector3(UnityEngine.Random.Range(0f, 38f), UnityEngine.Random.Range(-32f, 30f), -0.1f);
-
-        // GameData4 data4 = SaveSystem.LoadData4();
-        // plantPatcher.GetComponent<PlantingPatchScript>().isNotPlanted = data4.currentPatchesCondition;
+        
         
 
         mainMenuCanvas.SetActive(false);
@@ -464,7 +461,7 @@ public class GameManagerScript : MonoBehaviour
         playerHUD.SetActive(true);
         Time.timeScale = 1;
 
-
+        
     }
 
     

@@ -8,6 +8,7 @@ public class FenceSpawningScript : MonoBehaviour
     public GameObject spawnedFence;
     public GameObject sideFencePrefab;
     public List<GameObject> fenceArray {get; private set; } = new List<GameObject>();
+    //public GameObject[] fenceArray;
     public GameObject tempGO;
     public bool fenceIsActive;
 
@@ -17,6 +18,12 @@ public class FenceSpawningScript : MonoBehaviour
     {
        
 
+    }
+
+    public void SpawnCurrentFences()
+    {
+        
+        //patchArray[i].GetComponent<SpriteRenderer>().sprite = patchArray[i].GetComponent<PlantingPatchScript>().patchS;
     }
     
     
