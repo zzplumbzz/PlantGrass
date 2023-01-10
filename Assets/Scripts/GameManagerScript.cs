@@ -80,8 +80,8 @@ public class GameManagerScript : MonoBehaviour
 
     private void Update() 
     {
-        Debug.Log(levelCount);
-        money = 1000000;
+        //Debug.Log(levelCount);
+       // money = 1000000;
         if(mainMenuTrue == true)
         {
             winCanvas.SetActive(false);
