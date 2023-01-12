@@ -8,7 +8,7 @@ public class FenceSpawningScript : MonoBehaviour
     public GameObject spawnedFence;
     public GameObject sideFencePrefab;
     public List<GameObject> fenceArray {get; private set; } = new List<GameObject>();
-    //public GameObject[] fenceArray;
+    public GameObject[] fenceArrayN;
     public GameObject tempGO;
     public bool fenceIsActive;
 

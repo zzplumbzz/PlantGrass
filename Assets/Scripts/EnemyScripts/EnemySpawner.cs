@@ -23,14 +23,16 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gm.GetComponent<GameManagerScript>().levelCount == 5)
-        {
-            timerOn = true;
-        }
         if (timerOn == true)
         {
             Timer -= Time.deltaTime;
         }
+
+        if(gm.GetComponent<GameManagerScript>().levelCount == 5)
+        {
+            timerOn = true;
+        }
+        
         
         if(Timer <= 0 && gm.GetComponent<GameManagerScript>().levelCount >= 5 &&gm.GetComponent<GameManagerScript>().levelCount <= 11)
         {

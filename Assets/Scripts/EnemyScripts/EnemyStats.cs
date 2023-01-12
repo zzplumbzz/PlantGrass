@@ -15,7 +15,7 @@ public class EnemyStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Square");
+        //player = GameObject.Find("Square");
     }
 
     // Update is called once per frame

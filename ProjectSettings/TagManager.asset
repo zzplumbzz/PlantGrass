@@ -8,6 +8,7 @@ TagManager:
   - Planted
   - Weapon
   - PSprite
+  - AttackCollider
   layers:
   - Default
   - TransparentFX

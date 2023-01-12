@@ -17,6 +17,8 @@ public class GameManagerScript : MonoBehaviour
     public GameObject audioCanvas;
     public GameObject creditsCanvas;
     public GameObject playerHUD;
+    public GameObject shopCanvas;
+    public GameObject storyCanvas;
     public bool mainMenuTrue;
     public Button purchasePatchButton;
     public Button purchaseFenceButton;
@@ -29,14 +31,14 @@ public class GameManagerScript : MonoBehaviour
     public int moneyWS;
     public TMP_Text HealthWS;
     private FenceSpawningScript fss;
-    private EnemySpawner ess;
+    private GameObject ess;
     private PlayerStats ps;
     public GameObject patchClone;
     public GameObject enemyClone;
     public bool winTrue;
     private GameObject sps;
     public GameObject player;
-    public GameObject playerParent;
+    //public GameObject playerParent;
     public GameObject patchSpawner;
     public GameObject plantPatcher;
     public GameObject ms;
@@ -67,6 +69,8 @@ public class GameManagerScript : MonoBehaviour
         audioCanvas.SetActive(false);
         creditsCanvas.SetActive(false);
         newGamecanvas.SetActive(false);
+        shopCanvas.SetActive(false);
+        storyCanvas.SetActive(false);
         plusOneCounted = 0;
         //fenceLVLCount = 0f;
         winTrue = false;
@@ -75,12 +79,16 @@ public class GameManagerScript : MonoBehaviour
         patchButtonInt = 0;
         amountNeededFP = 20;
         amountNeededFF = 25;
+        player.transform.position = new Vector3(-9f, -0.15f, -0.1f);
+        //playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
+
+        ess = GameObject.Find("MonsterSpawner");
         
     }
 
     private void Update() 
     {
-        //Debug.Log(levelCount);
+        Debug.Log(levelCount);
        // money = 1000000;
         if(mainMenuTrue == true)
         {
@@ -146,6 +154,12 @@ public class GameManagerScript : MonoBehaviour
             Time.timeScale = 0;
             money += sps.GetComponent<SpawnPatchScript>().patchArray.Length;
             levelCount += 1;
+        }
+
+        if(player.GetComponent<PlayerStats>().playerHealth <= 0)
+        {
+            mainMenuCanvas.SetActive(true);
+            mainMenuTrue = true;
         }
 
         
@@ -409,10 +423,7 @@ public class GameManagerScript : MonoBehaviour
             player.GetComponent<PlayerStats>().playerHealth = 10f;
             refillHealthButton.enabled = false;
         }
-        else
-        {
-            refillHealthButton.enabled = false;
-        }
+        
         
     }
 
@@ -435,6 +446,11 @@ public class GameManagerScript : MonoBehaviour
         fenceLVLCount = data1.currentFences;
         levelCount = data1.currentLevel;
 
+        if(levelCount >= 5)
+        {
+            ess.GetComponent<EnemySpawner>().timerOn = true;
+        }
+
         Vector3 position;
         position.x = data1.playersPostition[0];
         position.y = data1.playersPostition[1];
@@ -445,7 +461,7 @@ public class GameManagerScript : MonoBehaviour
         PPosition.x = data1.playersParentPostition[0];
         PPosition.y = data1.playersParentPostition[1];
         PPosition.z = data1.playersParentPostition[2];
-        playerParent.transform.position = PPosition;
+        //playerParent.transform.position = PPosition;
 
         GameData2 data2 = SaveSystem.LoadData2();
         player.GetComponent<PlayerStats>().playerHealth = data2.playerHealth;
@@ -457,6 +473,7 @@ public class GameManagerScript : MonoBehaviour
         
 
         mainMenuCanvas.SetActive(false);
+        newGamecanvas.SetActive(false);
         mainMenuTrue = false;
         playerHUD.SetActive(true);
         Time.timeScale = 1;
@@ -481,6 +498,13 @@ public class GameManagerScript : MonoBehaviour
         mainMenuCanvas.SetActive(false);
         newGamecanvas.SetActive(false);
         mainMenuTrue = false;
+        storyCanvas.SetActive(true);
+        
+    }
+
+    public void PlayButtonPressed()
+    {
+        storyCanvas.SetActive(false);
         playerHUD.SetActive(true);
         Time.timeScale = 1;
         patchSpawner.GetComponent<SpawnPatchScript>().ResetLevel();
@@ -528,6 +552,18 @@ public class GameManagerScript : MonoBehaviour
         creditsCanvas.SetActive(false);
         audioCanvas.SetActive(false);
         Time.timeScale = 0;
+    }
+
+    public void ShopButtonPressed()
+    {
+        winCanvas.SetActive(false);
+        shopCanvas.SetActive(true);
+    }
+
+    public void BackToWinScreen()
+    {
+        winCanvas.SetActive(true);
+        shopCanvas.SetActive(false);
     }
 
     public void BackToMainMenu()

@@ -93,7 +93,7 @@ public class SpawnPatchScript : MonoBehaviour
                 ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position = new Vector3(UnityEngine.Random.Range(0f, 38f), UnityEngine.Random.Range(-32f, 30f), -0.1f);
                 Time.timeScale = 1;
                 gm.GetComponent<GameManagerScript>().player.transform.position = new Vector3(-9f, -0.15f, -0.1f);
-                gm.GetComponent<GameManagerScript>().playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
+                //gm.GetComponent<GameManagerScript>().playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
             }
 
 
