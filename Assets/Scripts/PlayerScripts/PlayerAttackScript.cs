@@ -6,6 +6,8 @@ public class PlayerAttackScript : MonoBehaviour
 {
     public BoxCollider2D playerAttackCollider;
     private EnemyStats es;
+    public AudioSource attackSound;
+    
    // public float timer = 0.1f;
     //public bool timerOn;
     private void Start()
@@ -19,12 +21,16 @@ public class PlayerAttackScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             playerAttackCollider.enabled = true;
+            attackSound.Play();
             //timerOn = true;
         }
         else if(Input.GetKeyUp(KeyCode.Space))
         {
             playerAttackCollider.enabled = false;
+            
         }
+
+        
 
         // if(timerOn == true)
         // {
@@ -37,6 +43,8 @@ public class PlayerAttackScript : MonoBehaviour
         //     timer = 0.1f;
         // }
     }
+
+    
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -44,6 +52,7 @@ public class PlayerAttackScript : MonoBehaviour
         {
             //Debug.Log(other);
             other.GetComponent<EnemyStats>().enemyHealth -= 2;
+            
         }
     }
     

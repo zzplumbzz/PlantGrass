@@ -94,6 +94,8 @@ public class SpawnPatchScript : MonoBehaviour
                 Time.timeScale = 1;
                 gm.GetComponent<GameManagerScript>().player.transform.position = new Vector3(-9f, -0.15f, -0.1f);
                 //gm.GetComponent<GameManagerScript>().playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
+                gm.GetComponent<GameManagerScript>().SM.enabled = false;
+                gm.GetComponent<GameManagerScript>().GP.enabled = true;
             }
 
 

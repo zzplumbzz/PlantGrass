@@ -33,7 +33,7 @@ public class PlantingPatchScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.CompareTag("PSprite") && isNotPlanted == true)
+        if (other.CompareTag("PSprite") && isNotPlanted == true && Input.GetKey(KeyCode.M))
         {
             PlantPatch(true);
             isNotPlanted = false;

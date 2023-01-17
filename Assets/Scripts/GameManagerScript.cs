@@ -19,6 +19,8 @@ public class GameManagerScript : MonoBehaviour
     public GameObject playerHUD;
     public GameObject shopCanvas;
     public GameObject storyCanvas;
+    public GameObject howToPlayScreenMM;
+    public GameObject howToPlayScreenPS;
     public bool mainMenuTrue;
     public Button purchasePatchButton;
     public Button purchaseFenceButton;
@@ -53,6 +55,12 @@ public class GameManagerScript : MonoBehaviour
     public TMP_Text playerHealthTXT;
     public float playersHealth;
     public int levelCount;
+    public AudioSource winSound;
+    public AudioSource deathSound;
+    public AudioSource takesDamageSound;
+    public AudioSource MM;
+    public AudioSource GP;
+    public AudioSource SM;
     
 
     // Start is called before the first frame update
@@ -71,6 +79,8 @@ public class GameManagerScript : MonoBehaviour
         newGamecanvas.SetActive(false);
         shopCanvas.SetActive(false);
         storyCanvas.SetActive(false);
+        howToPlayScreenMM.SetActive(false);
+        howToPlayScreenPS.SetActive(false);
         plusOneCounted = 0;
         //fenceLVLCount = 0f;
         winTrue = false;
@@ -83,6 +93,11 @@ public class GameManagerScript : MonoBehaviour
         //playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
 
         ess = GameObject.Find("MonsterSpawner");
+
+        MM.enabled = true;
+        //MM.playOnAwake = false;
+        GP.enabled = false;
+        SM.enabled = false;
         
     }
 
@@ -95,10 +110,11 @@ public class GameManagerScript : MonoBehaviour
             winCanvas.SetActive(false);
             pauseCanvas.SetActive(false);
             playerHUD.SetActive(false);
+            MM.enabled = true;
             Time.timeScale = 0;
         }
-       // Debug.Log(fenceLVLCount);
-        //Mathf.Clamp(fenceLVLCount, 0f, 21f);
+
+        
 
         if(fenceLVLCount <= 0f)
         {
@@ -154,16 +170,30 @@ public class GameManagerScript : MonoBehaviour
             Time.timeScale = 0;
             money += sps.GetComponent<SpawnPatchScript>().patchArray.Length;
             levelCount += 1;
+            winSound.Play();
+            GP.enabled = false;
+            SM.enabled = true;
         }
 
         if(player.GetComponent<PlayerStats>().playerHealth <= 0)
         {
             mainMenuCanvas.SetActive(true);
             mainMenuTrue = true;
+            GP.enabled = false;
+            MM.enabled = true;
         }
 
-        
-        
+
+        if (player.GetComponent<PlayerStats>().playerHealth <= 10f)
+        {
+            refillHealthButton.enabled = true;
+        }
+
+        if (player.GetComponent<PlayerStats>().playerHealth >= 10f)
+        {
+            refillHealthButton.enabled = false;
+
+        }
 
         
     }
@@ -417,12 +447,16 @@ public class GameManagerScript : MonoBehaviour
 
     public void RefillPlayerHealth()
     {
+        
+
         if(money >= 15 && player.GetComponent<PlayerStats>().playerHealth <= 10f)
         {
             money -= 15;
             player.GetComponent<PlayerStats>().playerHealth = 10f;
-            refillHealthButton.enabled = false;
+            
         }
+        
+      
         
         
     }
@@ -476,6 +510,8 @@ public class GameManagerScript : MonoBehaviour
         newGamecanvas.SetActive(false);
         mainMenuTrue = false;
         playerHUD.SetActive(true);
+        MM.enabled = false;
+        GP.enabled = true;
         Time.timeScale = 1;
 
         
@@ -490,6 +526,16 @@ public class GameManagerScript : MonoBehaviour
         winCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
         playerHUD.SetActive(false);
+        howToPlayScreenMM.SetActive(false);
+        Time.timeScale = 0;
+        GP.enabled = false;
+        MM.enabled = true;
+    }
+
+    public void ToPauseScreen()
+    {
+        howToPlayScreenPS.SetActive(false);
+        pauseCanvas.SetActive(true);
         Time.timeScale = 0;
     }
 
@@ -516,6 +562,8 @@ public class GameManagerScript : MonoBehaviour
         ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position = new Vector3(UnityEngine.Random.Range(0f, 38f), UnityEngine.Random.Range(-32f, 30f), -0.1f);
         Time.timeScale = 1;
         levelCount = 0;
+        MM.enabled = false;
+        GP.enabled = true;
     }
 
     public void NewGame()
@@ -530,6 +578,40 @@ public class GameManagerScript : MonoBehaviour
         mainMenuCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void HowToPlayButtonMM()
+    {
+        mainMenuCanvas.SetActive(false);
+        mainMenuTrue = false;
+        winCanvas.SetActive(false);
+        pauseCanvas.SetActive(false);
+        playerHUD.SetActive(false);
+        optionsCanvas.SetActive(false);
+        audioCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
+        newGamecanvas.SetActive(false);
+        shopCanvas.SetActive(false);
+        storyCanvas.SetActive(false);
+        howToPlayScreenPS.SetActive(false);
+        howToPlayScreenMM.SetActive(true);
+    }
+
+    public void HowToPlayButtonPS()
+    {
+        mainMenuCanvas.SetActive(false);
+        mainMenuTrue = false;
+        winCanvas.SetActive(false);
+        pauseCanvas.SetActive(false);
+        playerHUD.SetActive(false);
+        optionsCanvas.SetActive(false);
+        audioCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
+        newGamecanvas.SetActive(false);
+        shopCanvas.SetActive(false);
+        storyCanvas.SetActive(false);
+        howToPlayScreenPS.SetActive(true);
+        howToPlayScreenMM.SetActive(false);
     }
 
     public void AudioButtonPressed()

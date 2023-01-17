@@ -183,6 +183,8 @@ MonoBehaviour:
   ps: {fileID: 0}
   healthBar: {fileID: 0}
   playerTakesDamage: 0
+  deathTimer: 1
+  deathTimerOn: 0
 --- !u!60 &2781771615543990879
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -236,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4329252045367869831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.872161, y: -9.707157, z: -0.1}
+  m_LocalPosition: {x: 26.921646, y: 25.545311, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

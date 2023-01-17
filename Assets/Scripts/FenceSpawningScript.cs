@@ -11,7 +11,7 @@ public class FenceSpawningScript : MonoBehaviour
     public GameObject[] fenceArrayN;
     public GameObject tempGO;
     public bool fenceIsActive;
-
+    public int farmCount2;
 
 
     private void Start() 
