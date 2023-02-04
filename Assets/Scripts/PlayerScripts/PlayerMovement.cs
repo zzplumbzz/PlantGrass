@@ -6,9 +6,18 @@ public class PlayerMovement : MonoBehaviour
 {
     
     public float moveSpeed = 5f;
+    public float FPMoveSpeed = 10f;
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
+    private GameObject gm;
+    private GameObject pas;
+
+    void Start()
+    {
+        gm = GameObject.Find("GameManager");
+        pas = GameObject.Find("Player");
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,12 +50,22 @@ public class PlayerMovement : MonoBehaviour
          animator.SetFloat("Horizontal", movement.x);
          animator.SetFloat("Vertical", movement.y);
          animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        animator.SetBool("Attacking", pas.GetComponent<PlayerAttackScript>().isAttacking);
         //rb.velocity = new Vector2(0, 0);
     }
 
     private void FixedUpdate() 
     {
         //rb.velocity = new Vector2(0,0);
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (gm.GetComponent<GameManagerScript>().FPHouseSet == false)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
+        
+        if(gm.GetComponent<GameManagerScript>().FPHouseSet == true)
+        {
+            rb.MovePosition(rb.position + movement * FPMoveSpeed * Time.fixedDeltaTime);
+        }
     }
 }

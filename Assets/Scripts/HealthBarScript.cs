@@ -6,17 +6,23 @@ using UnityEngine.UI;
 public class HealthBarScript : MonoBehaviour
 {
     public Slider slider;
-    private GameObject player;
+    //private GameObject player;
+    
+    private void Start() 
+    {
+        //player = GameObject.Find("Player");
+    }
 
     public void SetMaxHealth(float health)
     {
-        player = GameObject.Find("Square");
-        slider.maxValue = player.GetComponent<PlayerStats>().playerMaxHealth;
-        slider.value = player.GetComponent<PlayerStats>().playerHealth;
+        
+        slider.maxValue = health;
+        slider.value = health;
+        
     }
 
     public void SetHealth(float health)
     {
-        slider.value = player.GetComponent<PlayerStats>().playerHealth;
+        slider.value = health;
     }
 }

@@ -41,17 +41,17 @@ public static class SaveSystem
         stream3.Close();
     }
 
-    // public static void SaveData4(PlantingPatchScript pps)
-    // {
-    //     BinaryFormatter formatter = new BinaryFormatter();
-    //     string path4 = Application.persistentDataPath + "/data4.SaveForData4";
-    //     FileStream stream4 = new FileStream(path4, FileMode.Create);
+    public static void SaveData4(SecretChestScript scs)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path4 = Application.persistentDataPath + "/data4.SaveForData4";
+        FileStream stream4 = new FileStream(path4, FileMode.Create);
 
-    //     GameData4 data4 = new GameData4(pps);
+        GameData4 data4 = new GameData4(scs);
 
-    //     formatter.Serialize(stream4, data4);
-    //     stream4.Close();
-    // }
+        formatter.Serialize(stream4, data4);
+        stream4.Close();
+    }
 
     public static GameData1 LoadData1()
     {
@@ -113,23 +113,23 @@ public static class SaveSystem
         }
     }
 
-    // public static GameData4 LoadData4()
-    // {
-    //     string path4 = Application.persistentDataPath + "/data4.SaveForData4";
-    //     if (File.Exists(path4))
-    //     {
-    //         BinaryFormatter formatter = new BinaryFormatter();
-    //         FileStream stream4 = new FileStream(path4, FileMode.Open);
+    public static GameData4 LoadData4()
+    {
+        string path4 = Application.persistentDataPath + "/data4.SaveForData4";
+        if (File.Exists(path4))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream4 = new FileStream(path4, FileMode.Open);
 
-    //         GameData4 data4 = formatter.Deserialize(stream4) as GameData4;
-    //         stream4.Close();
+            GameData4 data4 = formatter.Deserialize(stream4) as GameData4;
+            stream4.Close();
 
-    //         return data4;
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("Save File NotFound In " + path4);
-    //         return null;
-    //     }
-    // }
+            return data4;
+        }
+        else
+        {
+            Debug.LogError("Save File NotFound In " + path4);
+            return null;
+        }
+    }
 }

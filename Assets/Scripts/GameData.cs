@@ -11,6 +11,15 @@ public class GameData1
     public int currentLevel;
     public float[] playersParentPostition;
     public float[] playersPostition;
+    public bool SHSet;
+    public bool DMHPurchased;
+    public bool DMHSet;
+    public bool TMHSet;
+    public bool TMHPurchased;
+    public bool FPHSet;
+    public bool FPHPurchased;
+    public bool SFHSet;
+    public bool SFHPurchased;
 
     public GameData1(GameManagerScript gms)
     {
@@ -18,6 +27,7 @@ public class GameData1
         currentMoney = gms.money;
         currentFences = gms.fenceLVLCount;
         currentLevel = gms.levelCount;
+        
         playersParentPostition = new float[3];
         playersParentPostition[0] = -9f;
         playersParentPostition[1] = -0.15f;
@@ -26,6 +36,17 @@ public class GameData1
         playersPostition[0] = -9f;
         playersPostition[1] = -0.15f;
         playersPostition[2] = -0.1f;
+
+        SHSet = gms.SHSet;
+        DMHSet = gms.DMHouseSet;
+        TMHSet = gms.TMHouseSet;
+        FPHSet = gms.FPHouseSet;
+        SFHSet = gms.SFHouseSet;
+
+        DMHPurchased = gms.purchasedDMHouse;
+        TMHPurchased = gms.purchasedTMHouse;
+        FPHPurchased = gms.purchasedFPHouse;
+        SFHPurchased = gms.purchasedSFHouse;
     }
 }
 
@@ -55,10 +76,10 @@ public class GameData3
 [System.Serializable]
 public class GameData4
 {
-    public bool currentFences;
+    public bool ChestOpen;
 
-    public GameData4(FenceSpawningScript fss)
+    public GameData4(SecretChestScript scs)
     {
-        
+        ChestOpen = scs.isOpen;
     }
 }

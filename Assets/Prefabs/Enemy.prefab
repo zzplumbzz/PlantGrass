@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4329252045299347885}
   - component: {fileID: 8771411867673075859}
   - component: {fileID: 4414020534592313312}
-  - component: {fileID: 8652704262069963462}
   - component: {fileID: 5559192865384576840}
   - component: {fileID: 7391411566264082268}
   - component: {fileID: 2781771615543990879}
+  - component: {fileID: 7919944326218446114}
   m_Layer: 0
   m_Name: EnemyPH
   m_TagString: Enemy
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b0705fcefccbd64cb5a99a3ac8b44ef, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -1955258618, guid: 72a199a3314644f4191a2c75b27afd78, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -124,22 +124,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8652704262069963462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4329252045299347883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc34f84236fb227478544cbe34b97c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 5778444586915301496, guid: c481b6546b7429747b3d1c0713ed64ce, type: 3}
-  moveSpeed: 2
-  gms2: {fileID: 0}
-  sps: {fileID: 0}
 --- !u!61 &5559192865384576840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,18 +137,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0022377968, y: -0.006714821}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.75, y: 0.90625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75475216, y: 0.917963}
   m_EdgeRadius: 0
 --- !u!114 &7391411566264082268
 MonoBehaviour:
@@ -181,10 +165,18 @@ MonoBehaviour:
   enemyHealth: 2
   enemyPrefab: {fileID: 4329252045367869831}
   ps: {fileID: 0}
-  healthBar: {fileID: 0}
   playerTakesDamage: 0
   deathTimer: 1
   deathTimerOn: 0
+  deathTrue: 0
+  animator: {fileID: 7919944326218446114}
+  target: {fileID: 0}
+  moveSpeed: 2
+  deathSpeed: 0
+  gms2: {fileID: 0}
+  sps: {fileID: 0}
+  NewTarget: {fileID: 0}
+  canMove: 0
 --- !u!60 &2781771615543990879
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +194,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.75, y: 0.90625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -210,10 +202,30 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.7, y: 0.7}
-      - {x: -0.7, y: -0.7}
-      - {x: 0.7, y: -0.7}
-      - {x: 0.7, y: 0.7}
+    - - {x: -0.4, y: 0.5}
+      - {x: -0.4, y: -0.5}
+      - {x: 0.4, y: -0.5}
+      - {x: 0.4, y: 0.5}
+--- !u!95 &7919944326218446114
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4329252045299347883}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 66a660de61ca6de4f8ace4fc00d526bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4329252045367869831
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4329252045367869831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.921646, y: 25.545311, z: -0.1}
+  m_LocalPosition: {x: 15.145656, y: 17.628723, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

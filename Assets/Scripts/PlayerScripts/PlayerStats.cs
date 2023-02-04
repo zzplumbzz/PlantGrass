@@ -12,12 +12,14 @@ public class PlayerStats : MonoBehaviour
     public HealthBarScript healthBar;
     private GameObject es;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        es = GameObject.Find("Enemy");
+        //es = GameObject.Find("Enemy");
         playerHealth = playerMaxHealth;
-        //healthBar.SetMaxHealth(playerMaxHealth);
+        healthBar.SetMaxHealth(playerMaxHealth);
         
     }
 
@@ -25,7 +27,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
 
-        
+        healthBar.SetHealth(playerHealth);
         
         
         //Debug.Log(playerHealth);

@@ -14,10 +14,11 @@ public class SpawnPatchScript : MonoBehaviour
     public SpriteRenderer sr;
     private GameObject gm;
     private GameObject ms;
-    private GameObject ps;
+    //private GameObject ps;
+    //private GameObject fss;
     public int farmCount;
-    public float offsetX = -0.5f;
-    public float offsetY = 0.5f;
+    public float offsetX = -2f;
+    public float offsetY = 1f;
     public bool resetLevel;
 
     // Start is called before the first frame update
@@ -28,9 +29,18 @@ public class SpawnPatchScript : MonoBehaviour
         
         gm = GameObject.Find("GameManager");
         ms = GameObject.Find("MonsterSpawner");
-        ps = GameObject.Find("PlayerStats");
+        //ps = GameObject.Find("PlayerStats");
+        //fss = GameObject.Find("GameManager");
         SpawnPatches();
         
+    }
+
+    private void Update() 
+    {
+        if(farmCount <= 0)
+        {
+            farmCount = 0;
+        }
     }
 
     public void SpawnPatches()
@@ -65,7 +75,7 @@ public class SpawnPatchScript : MonoBehaviour
     {
         for(int i = 0; i <patchArray.Length; i++)
         {
-            if(patchArray[i].GetComponent<PlantingPatchScript>().isNotPlanted)//if(patchArray[i].GetComponent<PlantingPatchScript>().isPlanted)
+            if(!patchArray[i].GetComponent<PlantingPatchScript>().isNotPlanted)//if(patchArray[i].GetComponent<PlantingPatchScript>().isPlanted)
             {
                 return patchArray[i].transform;
             }
@@ -89,13 +99,46 @@ public class SpawnPatchScript : MonoBehaviour
                 patchArray[i].GetComponent<PlantingPatchScript>().isNotPlanted = true;//patchArray[i].GetComponent<PlantingPatchScript>().isPlanted = false;
                 gm.GetComponent<GameManagerScript>().winCanvas.SetActive(false);
                 gm.GetComponent<GameManagerScript>().winTrue = false;
+                gm.GetComponent<GameManagerScript>().shop1Canvas.SetActive(false);
+                gm.GetComponent<GameManagerScript>().shop2Canvas.SetActive(false);
                 //Destroy(ms.GetComponent<EnemySpawner>().monsterPrefab);
+                //ms.GetComponent<EnemySpawner>().monsterArray.RemoveRange(0, 5);
                 ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position = new Vector3(UnityEngine.Random.Range(0f, 38f), UnityEngine.Random.Range(-32f, 30f), -0.1f);
                 Time.timeScale = 1;
                 gm.GetComponent<GameManagerScript>().player.transform.position = new Vector3(-9f, -0.15f, -0.1f);
                 //gm.GetComponent<GameManagerScript>().playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
-                gm.GetComponent<GameManagerScript>().SM.enabled = false;
-                gm.GetComponent<GameManagerScript>().GP.enabled = true;
+                //gm.GetComponent<GameManagerScript>().SM.enabled = false;
+                //gm.GetComponent<GameManagerScript>().GP.enabled = true;
+
+                if(gm.GetComponent<GameManagerScript>().levelCount >= 10)
+                {
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesBottom1();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesTop1();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesRight1();
+                }
+
+                if (gm.GetComponent<GameManagerScript>().levelCount >= 20)
+                {
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesBottom2();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesTop2();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesRight2();
+                }
+
+                if (gm.GetComponent<GameManagerScript>().levelCount >= 30)
+                {
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesBottom3();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesTop3();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesRight3();
+                }
+
+                if (gm.GetComponent<GameManagerScript>().levelCount >= 40)
+                {
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesBottom4();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesTop4();
+                    gm.GetComponent<FenceSpawningScript>().SpawnFencesRight4();
+                }
+
+
             }
 
 

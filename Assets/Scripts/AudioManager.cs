@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] Slider volumeSlider;
     private GameObject gm;
     // Start is called before the first frame update
-    void Awake()
+    public void Awake()
     {
         gm = GameObject.Find("GameManager");
 
@@ -18,12 +18,14 @@ public class AudioManager : MonoBehaviour
             
             Load();
             //gm.GetComponent<GameManagerScript>().MM.enabled = true;
-            gm.GetComponent<GameManagerScript>().MM.playOnAwake = false;
+            //gm.GetComponent<GameManagerScript>().MM.playOnAwake = false;
         }
         else
         {
             Load();
         }
+
+        
         
     
         
@@ -33,9 +35,13 @@ public class AudioManager : MonoBehaviour
     {
         AudioListener.volume = volumeSlider.value;
         Save();
+        if(volumeSlider.value <= 0)
+        {
+            volumeSlider.value = 0.0001f;
+        }
     }
 
-    private void Load()
+    public void Load()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
     }

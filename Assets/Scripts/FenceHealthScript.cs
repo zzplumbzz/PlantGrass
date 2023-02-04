@@ -7,7 +7,9 @@ public class FenceHealthScript : MonoBehaviour
     public int health;
     public PolygonCollider2D healthCollider;
     public float Timer = 5f;
+    public float SFTimer = 10f;
     public bool timerOn;
+    public bool SFTimerOn;
     private GameObject gm;
 
     // Start is called before the first frame update
@@ -26,11 +28,23 @@ public class FenceHealthScript : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
-        if(health <= 0 && Timer <= 0)
+        if(SFTimerOn == true)
+        {
+            SFTimer -= Time.deltaTime;
+        }
+
+        if(health <= 0 && Timer <= 0 && gm.GetComponent<GameManagerScript>().SFHouseSet == false)
         {
             Debug.Log(Timer);
             Destroy(gameObject);
-            gm.GetComponent<GameManagerScript>().fenceLVLCount--;
+            //gm.GetComponent<GameManagerScript>().fenceLVLCount--;
+        }
+
+        if (health <= 0 && Timer <= 0 && gm.GetComponent<GameManagerScript>().SFHouseSet == true)
+        {
+            Debug.Log(Timer);
+            Destroy(gameObject);
+            //gm.GetComponent<GameManagerScript>().fenceLVLCount--;
         }
     }
 
@@ -40,7 +54,15 @@ public class FenceHealthScript : MonoBehaviour
         {
             health -= 10;
             Debug.Log("Helath down");
-            timerOn = true;
+            if(gm.GetComponent<GameManagerScript>().SFHouseSet == false)
+            {
+                timerOn = true;
+            }
+            if (gm.GetComponent<GameManagerScript>().SFHouseSet == true)
+            {
+                SFTimerOn = true;
+            }
+            
         }
     }
 

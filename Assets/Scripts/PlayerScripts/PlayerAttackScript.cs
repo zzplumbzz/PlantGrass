@@ -7,7 +7,8 @@ public class PlayerAttackScript : MonoBehaviour
     public BoxCollider2D playerAttackCollider;
     private EnemyStats es;
     public AudioSource attackSound;
-    
+    public Animator animator;
+    public bool isAttacking;
    // public float timer = 0.1f;
     //public bool timerOn;
     private void Start()
@@ -20,15 +21,20 @@ public class PlayerAttackScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            isAttacking = true;
             playerAttackCollider.enabled = true;
+            
             attackSound.Play();
             //timerOn = true;
         }
         else if(Input.GetKeyUp(KeyCode.Space))
         {
+            isAttacking = false;
             playerAttackCollider.enabled = false;
             
         }
+
+        
 
         
 

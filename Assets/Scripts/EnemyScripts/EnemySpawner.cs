@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public float Timer = 20f;
     public bool timerOn;
     private GameObject gm;
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()

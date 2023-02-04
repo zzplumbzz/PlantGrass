@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  FPMoveSpeed: 10
   rb: {fileID: 5723002259373639213}
   animator: {fileID: 6750491311875271597}
 --- !u!212 &3026526819277874821
@@ -208,7 +209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackCollider: {fileID: 9160297698553740484}
   attackSound: {fileID: 1664094883}
-  takesDamageSound: {fileID: 1664094883}
+  animator: {fileID: 0}
+  isAttacking: 0
 --- !u!82 &1664094883
 AudioSource:
   m_ObjectHideFlags: 0
@@ -446,7 +448,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.010946512, y: -0.022033155}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -457,5 +459,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 3.5}
+  m_Size: {x: 0.669487, y: 1.1942552}
   m_EdgeRadius: 0
