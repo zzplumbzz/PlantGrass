@@ -78,6 +78,7 @@ public class GameManagerScript : MonoBehaviour
     public TMP_Text currentLevelWS;
     private FenceSpawningScript fss;
     private GameObject ess;
+    private GameObject enemyStats;
     private PlayerStats ps;
     private GameObject am;
     public GameObject patchClone;
@@ -118,6 +119,11 @@ public class GameManagerScript : MonoBehaviour
     
     private bool beatGame;
     public int beatGameCounter = 0;
+
+    // public bool deathTimerOn;
+    // private float deathTimer = 1f;
+    // public Image deathIMG;
+    // public TMP_Text DeathTXT;
     // Start is called before the first frame update
     void Start()
     {
@@ -159,7 +165,8 @@ public class GameManagerScript : MonoBehaviour
         player.transform.position = new Vector3(-9f, -0.15f, -0.1f);
         //playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
         SHAmount.SetText("Set.");
-        ess = GameObject.Find("MonsterSpawner");
+        ms = GameObject.Find("MonsterSpawner");
+        //ess = GameObject.Find("EnemyPH");
         //am.GetComponent<AudioManager>().ChangeVolume();
         MM.enabled = true;
         //MM.playOnAwake = false;
@@ -189,6 +196,11 @@ public class GameManagerScript : MonoBehaviour
         FPBC.enabled = false;
         TMHBC.enabled = false;
         TMHEC.enabled = false;
+
+       // deathTimer = 3f;
+        // deathTimerOn = false;
+        // deathIMG.enabled = false;
+        // DeathTXT.enabled = false;
     }
 
     private void FixedUpdate() 
@@ -200,6 +212,7 @@ public class GameManagerScript : MonoBehaviour
 
     private void Update() 
     {
+        //Debug.Log(deathTimer);
         //Debug.Log(levelCount);
         //money = 1000000;
 
@@ -215,6 +228,21 @@ public class GameManagerScript : MonoBehaviour
             SGBGI.enabled = false;
         }
         
+        //if(deathTimerOn == true)
+        //{
+            //deathTimer -= Time.deltaTime;
+           // deathIMG.enabled = true;
+            //DeathTXT.enabled = true;
+        //}
+
+        // if(deathTimer <= 0)
+        // {
+        //     deathIMG.enabled = false;
+        //     DeathTXT.enabled = false;
+            
+        //     deathTimerOn = false;
+        //     //deathTimer = 3f;
+        // }
 
         if(mainMenuTrue == true)
         {
@@ -415,6 +443,12 @@ public class GameManagerScript : MonoBehaviour
             Time.timeScale = 0;
             levelCount += 1;
             winSound.Play();
+            int count = ms.GetComponent<EnemySpawner>().monsterArray.Count;
+            for(int i = 0; i < count; i++)
+            {
+                Destroy(ms.GetComponent<EnemySpawner>().monsterArray[0]);
+                ms.GetComponent<EnemySpawner>().monsterArray.RemoveAt(0);
+            }
             //GP.enabled = false;
             //SM.enabled = true;
 
@@ -437,9 +471,14 @@ public class GameManagerScript : MonoBehaviour
 
         if(player.GetComponent<PlayerStats>().playerHealth <= 0)
         {
+
             looseCanvas.SetActive(true);
-           // GP.enabled = false;
-            //MM.enabled = true;
+            Time.timeScale = 0;
+            // deathTimerOn = true;
+            // deathTimer -= Time.deltaTime;
+            // DeathTXT.enabled = true;
+            // deathIMG.enabled = true;
+            
         }
 
 
@@ -796,11 +835,20 @@ public class GameManagerScript : MonoBehaviour
 
         if(levelCount >= 5)
         {
-            ess.GetComponent<EnemySpawner>().timerOn = true;
+            ms.GetComponent<EnemySpawner>().timerOn = true;
         }
+
+        if (levelCount >= 5 && ms.GetComponent<EnemySpawner>().enemySpawned == true)
+        {
+            ms.GetComponent<EnemySpawner>().timerOn = true;
+            // ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position
+            // = new Vector3(38f, -32f, -0.1f);
+
+            //enemyStats.GetComponent<EnemyStats>().rb.transform.position = new Vector3(38f, -32f, -0.1f);
+        }
+       
         
-        ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position
-        = new Vector3(38f, -32f, -0.1f);
+        
 
         Vector3 position;
         position.x = data1.playersPostition[0];
@@ -829,8 +877,12 @@ public class GameManagerScript : MonoBehaviour
         mainMenuTrue = false;
         looseCanvas.SetActive(false);
         playerHUD.SetActive(true);
+
         //MM.enabled = false;
         //GP.enabled = true;
+        
+
+
         Time.timeScale = 1;
 
         
@@ -1095,6 +1147,8 @@ public class GameManagerScript : MonoBehaviour
         Time.timeScale = 0;
         //GP.enabled = false;
         MM.enabled = true;
+        pauseMenuTrue = false;
+        gameSaved = false;
     }
 
     public void ToPauseScreen()
@@ -1192,12 +1246,16 @@ public class GameManagerScript : MonoBehaviour
         storyCanvas.SetActive(false);
         howToPlayScreenPS.SetActive(true);
         howToPlayScreenMM.SetActive(false);
+        pauseMenuTrue = false;
+        gameSaved = false;
     }
 
     public void AudioButtonPressed()
     {
         mainMenuCanvas.SetActive(false);
         audioCanvas.SetActive(true);
+        pauseMenuTrue = false;
+        gameSaved = false;
         Time.timeScale = 0;
     }
 
@@ -1239,6 +1297,7 @@ public class GameManagerScript : MonoBehaviour
     {
         mainMenuCanvas.SetActive(true);
         optionsCanvas.SetActive(false);
+        gameSaved = false;
         Time.timeScale = 0;
     }
 

@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> monsterArray;
     public GameObject tempGO;
     public float Timer = 20f;
+    public bool enemySpawned;
     public bool timerOn;
     private GameObject gm;
     public bool isDead;
@@ -17,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         gm = GameObject.Find("GameManager");
-        
+        enemySpawned = false;
         
     }
 
@@ -37,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         
         if(Timer <= 0 && gm.GetComponent<GameManagerScript>().levelCount >= 5 &&gm.GetComponent<GameManagerScript>().levelCount <= 11)
         {
-
+            enemySpawned = true;
             SpawnMonstersBottomLVL1();
             SpawnMonstersTopLVL1();
             Timer = 20;
@@ -46,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (Timer <= 0 && gm.GetComponent<GameManagerScript>().levelCount >= 12 && gm.GetComponent<GameManagerScript>().levelCount <= 25)
         {
-
+            enemySpawned = true;
             SpawnMonstersBottomLVL2();
             SpawnMonstersTopLVL2();
             Timer = 20;
@@ -55,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (Timer <= 0 && gm.GetComponent<GameManagerScript>().levelCount >= 25)
         {
-
+            enemySpawned = true;
             SpawnMonstersBottomLVL3();
             SpawnMonstersTopLVL3();
             Timer = 20;

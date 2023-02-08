@@ -10,14 +10,15 @@ public class PlayerStats : MonoBehaviour
     public float playerHealth;
     public float playerMaxHealth = 10f;
     public HealthBarScript healthBar;
-    private GameObject es;
+    //private GameObject es;
+    
 
     
 
     // Start is called before the first frame update
     void Start()
     {
-        //es = GameObject.Find("Enemy");
+        
         playerHealth = playerMaxHealth;
         healthBar.SetMaxHealth(playerMaxHealth);
         

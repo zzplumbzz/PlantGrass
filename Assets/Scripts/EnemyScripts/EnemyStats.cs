@@ -20,7 +20,7 @@ public class EnemyStats : MonoBehaviour
 
     public Transform target;
     //public Transform player;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Vector2 moveDirection;
     //private GameObject ems;
     public float moveSpeed = 2f;
