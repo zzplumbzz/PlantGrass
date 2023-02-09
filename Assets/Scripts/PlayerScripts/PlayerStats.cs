@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     public float playerHealth;
     public float playerMaxHealth = 10f;
     public HealthBarScript healthBar;
+    public HealthBarScript healthBarWS;
     //private GameObject es;
     
 
@@ -29,7 +30,7 @@ public class PlayerStats : MonoBehaviour
     {
 
         healthBar.SetHealth(playerHealth);
-        
+        healthBarWS.SetHealth(playerHealth);
         
         //Debug.Log(playerHealth);
         if(playerHealth <= 0)
