@@ -25,15 +25,12 @@ public class PlantingPatchScript : MonoBehaviour
         
     }
 
-    private void Update() 
-    {
-        
-    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.CompareTag("PSprite") && isNotPlanted == true && Input.GetKey(KeyCode.M))
+        if (other.CompareTag("PSprite") && isNotPlanted == true && Input.GetKey(KeyCode.LeftShift))
         {
             PlantPatch(true);
             isNotPlanted = false;

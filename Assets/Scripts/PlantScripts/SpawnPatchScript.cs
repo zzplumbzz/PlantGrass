@@ -101,14 +101,20 @@ public class SpawnPatchScript : MonoBehaviour
                 gm.GetComponent<GameManagerScript>().winTrue = false;
                 gm.GetComponent<GameManagerScript>().shop1Canvas.SetActive(false);
                 gm.GetComponent<GameManagerScript>().shop2Canvas.SetActive(false);
+                gm.GetComponent<GameManagerScript>().gameSaved = false;
                 //Destroy(ms.GetComponent<EnemySpawner>().monsterPrefab);
                 //ms.GetComponent<EnemySpawner>().monsterArray.RemoveRange(0, 5);
                 ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position = new Vector3(UnityEngine.Random.Range(0f, 38f), UnityEngine.Random.Range(-32f, 30f), -0.1f);
                 Time.timeScale = 1;
                 gm.GetComponent<GameManagerScript>().player.transform.position = new Vector3(-9f, -0.15f, -0.1f);
-                //gm.GetComponent<GameManagerScript>().playerParent.transform.position = new Vector3(-9f, -0.15f, -0.1f);
-                //gm.GetComponent<GameManagerScript>().SM.enabled = false;
-                //gm.GetComponent<GameManagerScript>().GP.enabled = true;
+                gm.GetComponent<GameManagerScript>().playerHUD.SetActive(true);
+                
+                int count = ms.GetComponent<EnemySpawner>().monsterArray.Count;//added all this with // behind
+                for (int m = 0; m < count; m++)//
+                {//
+                    Destroy(ms.GetComponent<EnemySpawner>().monsterArray[0]);//
+                    ms.GetComponent<EnemySpawner>().monsterArray.RemoveAt(0);//
+                }//
 
                 if(gm.GetComponent<GameManagerScript>().levelCount >= 10)
                 {

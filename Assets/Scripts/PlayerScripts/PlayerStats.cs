@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 {   
     
     public float playerHealth;
-    public float playerMaxHealth = 10f;
+    public float playerMaxHealth = 100f;
     public HealthBarScript healthBar;
     public HealthBarScript healthBarWS;
     //private GameObject es;

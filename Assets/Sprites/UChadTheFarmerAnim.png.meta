@@ -250,9 +250,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 607
-        y: 3073
+        y: 3072
         width: 337
-        height: 509
+        height: 510
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,9 +271,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1124
-        y: 3070
+        y: 3072
         width: 316
-        height: 513
+        height: 511
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,9 +292,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1619
-        y: 3071
+        y: 3072
         width: 350
-        height: 512
+        height: 511
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,9 +313,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 81
-        y: 2560
+        y: 2561
         width: 351
-        height: 512
+        height: 509
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,7 +336,7 @@ TextureImporter:
         x: 608
         y: 2561
         width: 335
-        height: 510
+        height: 509
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -354,10 +354,10 @@ TextureImporter:
       name: UChadU3
       rect:
         serializedVersion: 2
-        x: 1119
-        y: 2559
+        x: 1120
+        y: 2560
         width: 320
-        height: 512
+        height: 511
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,7 +378,7 @@ TextureImporter:
         x: 1616
         y: 2560
         width: 336
-        height: 510
+        height: 511
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,9 +439,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1129
-        y: 2047
+        y: 2048
         width: 294
-        height: 511
+        height: 510
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,9 +460,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1648
-        y: 2050
+        y: 2048
         width: 289
-        height: 510
+        height: 512
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -483,7 +483,7 @@ TextureImporter:
         x: 112
         y: 1537
         width: 289
-        height: 510
+        height: 509
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,9 +502,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 592
-        y: 1535
+        y: 1536
         width: 320
-        height: 513
+        height: 510
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -525,7 +525,7 @@ TextureImporter:
         x: 1136
         y: 1536
         width: 289
-        height: 509
+        height: 510
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -546,7 +546,7 @@ TextureImporter:
         x: 1647
         y: 1536
         width: 306
-        height: 511
+        height: 510
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -670,9 +670,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 623
-        y: 513
+        y: 512
         width: 305
-        height: 509
+        height: 510
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -712,9 +712,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1665
-        y: 511
+        y: 512
         width: 289
-        height: 511
+        height: 510
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -798,7 +798,7 @@ TextureImporter:
         x: 1630
         y: 2
         width: 289
-        height: 507
+        height: 509
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

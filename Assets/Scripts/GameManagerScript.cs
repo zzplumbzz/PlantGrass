@@ -255,19 +255,19 @@ public class GameManagerScript : MonoBehaviour
 
         if (purchasedDMHouse == false)
         {
-            DMHAmount.SetText("You Need " + "$20,000 To Purchace.");
+            DMHAmount.SetText("You Need " + "$15,000 To Purchace.");
         }
         if (purchasedFPHouse == false)
         {
-            FPHAmount.SetText("You Need " + "$15,000 To Purchace.");
+            FPHAmount.SetText("You Need " + "$10,000 To Purchace.");
         }
         if (purchasedSFHouse == false)
         {
-            SFHAmount.SetText("You Need " + "$15,000 To Purchace.");
+            SFHAmount.SetText("You Need " + "$10,000 To Purchace.");
         }
         if (purchasedTMHouse == false)
         {
-            TMHAmount.SetText("You Need " + "$30,000 To Purchace.");
+            TMHAmount.SetText("You Need " + "$20,000 To Purchace.");
         }
 
         if(SHSet == true )
@@ -416,18 +416,84 @@ public class GameManagerScript : MonoBehaviour
         //     purchaseFenceButton.enabled = false;
         // }
 
-        if (Input.GetKeyDown(KeyCode.P))//&& winCanvas.active == false
+        
+
+        if (Input.GetKeyDown(KeyCode.P) && winTrue == false)//&& winCanvas.active == false
         {
+            gameSaved = false;
+            pauseCanvas.SetActive(true);
+            playerHUD.SetActive(false);
+            pauseMenuTrue = true;
+            
+            Time.timeScale = 0;
+
+            if(mainMenuTrue == true)
+            {
+                pauseCanvas.SetActive(false);
+                playerHUD.SetActive(false);
+                pauseMenuTrue = false;
+            }
+        }
+
+        // if(pauseMenuTrue == true && Input.GetKeyDown(KeyCode.P))
+        // {
+            
+        //         pauseCanvas.SetActive(false);
+        //         playerHUD.SetActive(true);
+        //         pauseMenuTrue = false;
+        //         Time.timeScale = 1;
+            
+        // }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && winTrue == false)//&& winCanvas.active == false
+        {
+            gameSaved = false;
             pauseCanvas.SetActive(true);
             playerHUD.SetActive(false);
             pauseMenuTrue = true;
             Time.timeScale = 0;
+
+            if (mainMenuTrue == true)
+            {
+                pauseCanvas.SetActive(false);
+                playerHUD.SetActive(false);
+                pauseMenuTrue = false;
+            }
         }
+
+        // if (pauseMenuTrue == true && Input.GetKeyDown(KeyCode.Escape))
+        // {
+
+        //     pauseCanvas.SetActive(false);
+        //     playerHUD.SetActive(true);
+        //     pauseMenuTrue = false;
+        //     Time.timeScale = 1;
+
+        // }
+
+        // if (Input.GetKeyDown(KeyCode.Escape))//&& winCanvas.active == false
+        // {
+        //     pauseCanvas.SetActive(true);
+        //     playerHUD.SetActive(false);
+        //     pauseMenuTrue = true;
+        //     Time.timeScale = 0;
+        // }
+
+        // if (pauseMenuTrue == true && Input.GetKeyDown(KeyCode.Escape))
+        // {
+
+        //     pauseCanvas.SetActive(false);
+        //     playerHUD.SetActive(true);
+        //     pauseMenuTrue = false;
+        //     Time.timeScale = 1;
+
+        // }
 
         if(winTrue == true)
         {
             pauseCanvas.SetActive(false);
             pauseMenuTrue = false;
+            playerHUD.SetActive(false);
         }
 
         if(plusOneCounted <= 0)
@@ -443,6 +509,7 @@ public class GameManagerScript : MonoBehaviour
             Time.timeScale = 0;
             levelCount += 1;
             winSound.Play();
+            SaveButtonPressed();
             int count = ms.GetComponent<EnemySpawner>().monsterArray.Count;
             for(int i = 0; i < count; i++)
             {
@@ -482,12 +549,12 @@ public class GameManagerScript : MonoBehaviour
         }
 
 
-        if (player.GetComponent<PlayerStats>().playerHealth <= 10f)
+        if (player.GetComponent<PlayerStats>().playerHealth <= 100f)
         {
             refillHealthButton.enabled = true;
         }
 
-        if (player.GetComponent<PlayerStats>().playerHealth >= 10f)
+        if (player.GetComponent<PlayerStats>().playerHealth >= 100f)
         {
             refillHealthButton.enabled = false;
 
@@ -716,71 +783,71 @@ public class GameManagerScript : MonoBehaviour
         }
         else if (patchButtonInt == 2)
         {
-            amountNeededFP = 100;
+            amountNeededFP = 75;
         }
         else if (patchButtonInt == 3)
         {
-            amountNeededFP = 250;
+            amountNeededFP = 100;
         }
         else if (patchButtonInt == 4)
         {
-            amountNeededFP = 750;
+            amountNeededFP = 250;
         }
         else if (patchButtonInt == 5)
         {
-            amountNeededFP = 1500;
+            amountNeededFP = 500;
         }
         else if (patchButtonInt == 6)
         {
-            amountNeededFP = 2000;
+            amountNeededFP = 750;
         }
         else if (patchButtonInt == 7)
         {
-            amountNeededFP = 3000;
+            amountNeededFP = 1000;
         }
         else if (patchButtonInt == 8)
         {
-            amountNeededFP = 4500;
+            amountNeededFP = 1250;
         }
         else if (patchButtonInt == 9)
         {
-            amountNeededFP = 6500;
+            amountNeededFP = 1500;
         }
         else if (patchButtonInt == 10)
         {
-            amountNeededFP = 8000;
+            amountNeededFP = 1750;
         }
         else if (patchButtonInt == 11)
         {
-            amountNeededFP = 10500;
+            amountNeededFP = 2000;
         }
         else if (patchButtonInt == 12)
         {
-            amountNeededFP = 15000;
+            amountNeededFP = 2250;
         }
         else if (patchButtonInt == 13)
         {
-            amountNeededFP = 20500;
+            amountNeededFP = 2500;
         }
         else if (patchButtonInt == 14)
         {
-            amountNeededFP = 25000;
+            amountNeededFP = 2750;
         }
         else if (patchButtonInt == 15)
         {
-            amountNeededFP = 30000;
+            amountNeededFP = 3000;
         }
         else if (patchButtonInt == 16)
         {
-            amountNeededFP = 40000;
+            amountNeededFP = 3250;
         }
         else if (patchButtonInt == 17)
         {
-            amountNeededFP = 50000;
+            amountNeededFP = 3500;
         }
         else if (patchButtonInt == 18)
         {
-            amountNeededFP = 60000;
+            amountNeededFP = 4000;
         }
     }
 
@@ -788,10 +855,10 @@ public class GameManagerScript : MonoBehaviour
     {
         
 
-        if(money >= 15 && player.GetComponent<PlayerStats>().playerHealth <= 10f)
+        if(money >= 15 && player.GetComponent<PlayerStats>().playerHealth <= 100f)
         {
             money -= 15;
-            player.GetComponent<PlayerStats>().playerHealth = 10f;
+            player.GetComponent<PlayerStats>().playerHealth = 100f;
             
         }
         
@@ -846,9 +913,13 @@ public class GameManagerScript : MonoBehaviour
 
             //enemyStats.GetComponent<EnemyStats>().rb.transform.position = new Vector3(38f, -32f, -0.1f);
         }
-       
-        
-        
+
+        int count = ms.GetComponent<EnemySpawner>().monsterArray.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Destroy(ms.GetComponent<EnemySpawner>().monsterArray[0]);
+            ms.GetComponent<EnemySpawner>().monsterArray.RemoveAt(0);
+        }
 
         Vector3 position;
         position.x = data1.playersPostition[0];
@@ -918,9 +989,9 @@ public class GameManagerScript : MonoBehaviour
 
     public void PurchaseDoubleMoneyHouse()
     {
-        if(money >= 20000 && purchasedDMHouse == false)
+        if(money >= 15000 && purchasedDMHouse == false)
         {
-            money -= 20000;
+            money -= 15000;
 
             purchasedDMHouse = true;
 
@@ -976,9 +1047,9 @@ public class GameManagerScript : MonoBehaviour
 
     public void PurchaseTripleMoneyHouse()
     {
-        if(money >= 30000 && purchasedTMHouse == false)
+        if(money >= 20000 && purchasedTMHouse == false)
         {
-            money -= 30000;
+            money -= 20000;
 
             TMHouseSet = true;
             DMHouseSet = false;
@@ -1030,9 +1101,9 @@ public class GameManagerScript : MonoBehaviour
 
     public void PurchaseFasterPlayerHouse()
     {
-        if(money >= 15000 && purchasedFPHouse == false)
+        if(money >= 10000 && purchasedFPHouse == false)
         {
-            money -= 15000;
+            money -= 10000;
 
             purchasedFPHouse = true;
 
@@ -1083,9 +1154,9 @@ public class GameManagerScript : MonoBehaviour
 
     public void PurcahseStrongerFenceHouse()
     {
-        if(money >= 15000 && purchasedSFHouse == false)
+        if(money >= 10000 && purchasedSFHouse == false)
         {
-            money -= 15000;
+            money -= 10000;
 
             purchasedSFHouse = true;
 
@@ -1177,7 +1248,7 @@ public class GameManagerScript : MonoBehaviour
         money = 0;
         moneyWS = 0;
         moneySS = 0;
-        player.GetComponent<PlayerStats>().playerHealth = 10f;
+        player.GetComponent<PlayerStats>().playerHealth = 100f;
         patchSpawner.GetComponent<SpawnPatchScript>().farmCount = 3;
         fenceLVLCount = 0f;
         ms.GetComponent<EnemySpawner>().monsterPrefab.transform.position = new Vector3(UnityEngine.Random.Range(0f, 38f), UnityEngine.Random.Range(-32f, 30f), -0.1f);
@@ -1191,6 +1262,13 @@ public class GameManagerScript : MonoBehaviour
         purchasedFPHouse = false;
         purchasedSFHouse = false;
         purchasedTMHouse = false;
+
+        int count = ms.GetComponent<EnemySpawner>().monsterArray.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Destroy(ms.GetComponent<EnemySpawner>().monsterArray[0]);
+            ms.GetComponent<EnemySpawner>().monsterArray.RemoveAt(0);
+        }
 
     }
 

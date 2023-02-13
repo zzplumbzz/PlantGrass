@@ -74,6 +74,8 @@ public class EnemyStats : MonoBehaviour
         if(deathTimerOn == true)
         {
             deathTimer -= Time.deltaTime;
+            playerTakesDamage = false;
+            
         }
 
         if(deathTimer <=0)
@@ -118,13 +120,13 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("PSprite"))
         {
             gm.GetComponent<GameManagerScript>().takesDamageSound.Play();
             playerTakesDamage = true;
-            other.GetComponent<PlayerStats>().playerHealth -= 2;
+            other.GetComponent<PlayerStats>().playerHealth -= 1;
             //healthBar.GetComponent<HealthBarScript>().SetHealth(float health);
            // gameObject.GetComponent<PlayerStats>().SetHealth(ps.GetComponent<PlayerStats>().playerHealth);
         }
